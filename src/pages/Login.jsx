@@ -22,7 +22,8 @@ function Login() {
     setCargando(false);
 
     if (error) {
-      alert("Correo o contraseña incorrectos.");
+      console.error(error);
+      alert(error.message);
       return;
     }
 
