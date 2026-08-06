@@ -16,22 +16,34 @@ function Cart() {
     <div className="min-h-screen bg-zinc-950 text-white">
 
       {/* HEADER */}
-      <header className="bg-zinc-900 shadow-lg p-6">
 
-        <button
-          onClick={() => navigate("/menu")}
-          className="text-yellow-400 font-bold hover:text-yellow-300"
-        >
-          ← Volver al menú
-        </button>
+      <header className="sticky top-0 z-40 bg-zinc-900/95 backdrop-blur border-b border-zinc-800">
 
-        <h1 className="text-4xl font-black text-yellow-400 mt-4">
-          🛒 Mi Pedido
-        </h1>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-5">
+
+          <button
+            onClick={() => navigate("/menu")}
+            className="text-yellow-400 font-bold hover:text-yellow-300 transition"
+          >
+            ← Volver al menú
+          </button>
+
+          <h1 className="text-3xl sm:text-4xl font-black text-yellow-400 mt-3">
+            🛒 Mi Pedido
+          </h1>
+
+          {carrito.length > 0 && (
+            <p className="text-gray-400 mt-1">
+              {carrito.length}{" "}
+              {carrito.length === 1 ? "producto" : "productos"}
+            </p>
+          )}
+
+        </div>
 
       </header>
 
-      <main className="max-w-5xl mx-auto p-6">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
 
         {carrito.length === 0 ? (
 
@@ -47,9 +59,9 @@ function Cart() {
 
             <button
               onClick={() => navigate("/menu")}
-              className="mt-8 bg-yellow-400 hover:bg-yellow-300 text-black px-8 py-4 rounded-xl font-bold"
+              className="mt-8 bg-yellow-400 hover:bg-yellow-300 text-black px-8 py-4 rounded-2xl font-bold transition"
             >
-              Ir al menú
+              🍔 Ir al menú
             </button>
 
           </div>
@@ -57,86 +69,148 @@ function Cart() {
         ) : (
 
           <>
-            <div className="space-y-6">
+            <div className="space-y-8">
 
               {carrito.map((item, index) => (
 
                 <div
                   key={index}
-                  className="bg-zinc-900 rounded-3xl p-5 flex gap-5 items-center"
+                  className="
+                    bg-zinc-900
+                    border
+                    border-zinc-800
+                    rounded-[30px]
+                    shadow-xl
+                    p-6
+                    hover:border-yellow-400/30
+                    transition
+                  "
                 >
 
-                  {/* Imagen */}
-                  <img
-                    src={item.imagen}
-                    alt={item.nombre}
-                    className="w-32 h-32 object-contain bg-black rounded-2xl p-2"
-                  />
+                  <div className="flex flex-col md:flex-row gap-6">
 
-                  {/* Información */}
-                  <div className="flex-1">
+                    {/* Imagen */}
 
-                    <h2 className="text-2xl font-bold">
-                      {item.nombre}
-                    </h2>
+                    <div className="flex justify-center">
 
-                    {item.toppings.length > 0 && (
-                      <div className="mt-2">
-
-                        {item.toppings.map((topping) => (
-
-                          <p
-                            key={topping.id}
-                            className="text-gray-400"
-                          >
-                            + {topping.emoji} {topping.nombre}
-                          </p>
-
-                        ))}
-
-                      </div>
-                    )}
-
-                    {/* Cantidad */}
-
-                    <div className="flex items-center gap-4 mt-5">
-
-                      <button
-                        onClick={() => disminuirCantidad(index)}
-                        className="bg-red-500 hover:bg-red-400 w-10 h-10 rounded-full text-xl font-bold"
-                      >
-                        −
-                      </button>
-
-                      <span className="text-2xl font-bold">
-                        {item.cantidad}
-                      </span>
-
-                      <button
-                        onClick={() => aumentarCantidad(index)}
-                        className="bg-green-500 hover:bg-green-400 w-10 h-10 rounded-full text-xl font-bold"
-                      >
-                        +
-                      </button>
+                      <img
+                        src={item.imagen}
+                        alt={item.nombre}
+                        className="
+                          w-48
+                          h-48
+                          md:w-40
+                          md:h-40
+                          object-contain
+                          bg-black
+                          rounded-3xl
+                          p-4
+                        "
+                      />
 
                     </div>
 
-                  </div>
+                    {/* Información */}
 
-                  {/* Precio */}
+                    <div className="flex-1 flex flex-col justify-between">
 
-                  <div className="text-right">
+                      <div>
 
-                    <h2 className="text-3xl font-black text-yellow-400">
-                      S/{(item.total * item.cantidad).toFixed(2)}
-                    </h2>
+                        <h2 className="text-2xl sm:text-3xl font-black">
+                          {item.nombre}
+                        </h2>
 
-                    <button
-                      onClick={() => eliminarDelCarrito(index)}
-                      className="text-red-500 hover:text-red-400 mt-4"
-                    >
-                      🗑 Eliminar
-                    </button>
+                        {item.toppings.length > 0 && (
+
+                          <div className="mt-4 space-y-1">
+
+                            {item.toppings.map((topping) => (
+
+                              <p
+                                key={topping.id}
+                                className="text-gray-400"
+                              >
+                                + {topping.emoji} {topping.nombre}
+                              </p>
+
+                            ))}
+
+                          </div>
+
+                        )}
+
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mt-8">
+
+                        {/* Cantidad */}
+
+                        <div className="flex items-center justify-center sm:justify-start gap-5">
+
+                          <button
+                            onClick={() => disminuirCantidad(index)}
+                            className="
+                              w-12
+                              h-12
+                              rounded-full
+                              bg-red-500
+                              hover:bg-red-400
+                              text-2xl
+                              font-bold
+                              transition
+                            "
+                          >
+                            −
+                          </button>
+
+                          <span className="text-3xl font-black">
+                            {item.cantidad}
+                          </span>
+
+                          <button
+                            onClick={() => aumentarCantidad(index)}
+                            className="
+                              w-12
+                              h-12
+                              rounded-full
+                              bg-green-500
+                              hover:bg-green-400
+                              text-2xl
+                              font-bold
+                              transition
+                            "
+                          >
+                            +
+                          </button>
+
+                        </div>
+
+                        {/* Precio */}
+
+                        <div className="text-center sm:text-right">
+
+                          <h2 className="text-3xl sm:text-4xl font-black text-yellow-400">
+                            S/{(item.total * item.cantidad).toFixed(2)}
+                          </h2>
+
+                          <button
+                            onClick={() => eliminarDelCarrito(index)}
+                            className="
+                              mt-4
+                              text-red-500
+                              hover:text-red-400
+                              font-semibold
+                              transition
+                            "
+                          >
+                            🗑 Eliminar
+                          </button>
+
+                        </div>
+
+                      </div>
+
+                    </div>
 
                   </div>
 
@@ -145,37 +219,61 @@ function Cart() {
               ))}
 
             </div>
+                        {/* TOTAL */}
 
-            {/* TOTAL */}
+            <div
+              className="
+                mt-10
+                bg-zinc-900
+                border
+                border-zinc-800
+                rounded-[30px]
+                shadow-xl
+                p-6
+                sticky
+                bottom-4
+              "
+            >
 
-            <div className="bg-zinc-900 rounded-3xl mt-10 p-6">
+              <div className="flex items-center justify-between">
 
-              <div className="flex justify-between text-4xl font-black">
+                <div>
 
-                <span>Total</span>
+                  <p className="text-gray-400 text-sm uppercase tracking-widest">
+                    Total del pedido
+                  </p>
 
-                <span className="text-yellow-400">
-                  S/{total.toFixed(2)}
-                </span>
+                  <h2 className="text-4xl sm:text-5xl font-black text-yellow-400 mt-2">
+                    S/{total.toFixed(2)}
+                  </h2>
+
+                </div>
+
+                <div className="hidden sm:flex text-5xl">
+                  🍔
+                </div>
 
               </div>
 
               <button
                 onClick={() => navigate("/checkout")}
                 className="
-                  mt-8
                   w-full
+                  mt-8
                   bg-yellow-400
                   hover:bg-yellow-300
+                  active:scale-[0.98]
                   text-black
-                  rounded-2xl
+                  rounded-3xl
                   py-5
-                  font-black
                   text-xl
-                  transition
+                  font-black
+                  transition-all
+                  duration-300
+                  shadow-lg
                 "
               >
-                Confirmar Pedido
+                🚀 Confirmar Pedido
               </button>
 
             </div>

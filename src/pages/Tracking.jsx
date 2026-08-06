@@ -101,40 +101,42 @@ function Tracking() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex justify-center items-center p-6">
+    <div className="min-h-screen bg-zinc-950 flex justify-center items-center px-4 py-8">
 
-      <div className="bg-zinc-900 rounded-3xl p-10 max-w-lg w-full shadow-2xl">
+      <div className="bg-zinc-900 rounded-3xl p-6 sm:p-10 max-w-lg w-full shadow-2xl">
 
-        <h1 className="text-4xl font-black text-yellow-400 text-center">
+        <h1 className="text-3xl sm:text-4xl font-black text-yellow-400 text-center">
           🍔 Mono Burgers
         </h1>
 
-        <p className="text-center text-gray-400 mt-3">
+        <p className="text-center text-gray-400 mt-3 text-sm sm:text-base">
           Gracias por tu compra ❤️
         </p>
 
-        <div className="mt-10">
+        <div className="mt-8 sm:mt-10">
 
-          <h2 className="text-2xl font-bold">
+          <h2 className="text-xl sm:text-2xl font-bold break-all">
             Pedido #{pedido.numero_pedido}
           </h2>
 
-          <p className="mt-4">
+          <p className="mt-4 text-sm sm:text-base break-words">
             👤 {pedido.cliente}
           </p>
 
-          <p className="mt-6 text-xl">
+          <p className="mt-6 text-lg sm:text-xl">
             Estado actual
           </p>
 
-          <h2 className={`text-4xl font-black mt-2 ${colorEstado()}`}>
+          <h2
+            className={`text-3xl sm:text-4xl font-black mt-2 break-words ${colorEstado()}`}
+          >
             {pedido.estado}
           </h2>
 
-          <div className="w-full bg-zinc-700 rounded-full h-5 mt-8 overflow-hidden">
+          <div className="w-full bg-zinc-700 rounded-full h-4 sm:h-5 mt-8 overflow-hidden">
 
             <div
-              className="bg-yellow-400 h-5 transition-all duration-700"
+              className="bg-yellow-400 h-4 sm:h-5 transition-all duration-700"
               style={{
                 width: `${progreso}%`,
               }}
@@ -142,11 +144,11 @@ function Tracking() {
 
           </div>
 
-          <p className="text-gray-400 mt-8">
+          <p className="text-gray-400 mt-8 text-sm sm:text-base">
             Tiempo estimado
           </p>
 
-          <h2 className="text-2xl font-bold">
+          <h2 className="text-xl sm:text-2xl font-bold">
             15 - 20 minutos
           </h2>
 

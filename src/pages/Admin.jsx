@@ -39,7 +39,6 @@ function Admin() {
 
     const habilitarAudio = () => {
       audioHabilitado.current = true;
-      console.log("🔊 Audio habilitado");
       window.removeEventListener("click", habilitarAudio);
     };
 
@@ -57,8 +56,6 @@ function Admin() {
           table: "pedidos",
         },
         async (payload) => {
-          console.log("📦 Cambio recibido:", payload);
-
           await obtenerPedidos();
 
           if (
@@ -76,14 +73,12 @@ function Admin() {
               }, 3000);
 
             } catch (err) {
-              console.error("Error reproduciendo sonido:", err);
+              console.error(err);
             }
           }
         }
       )
-      .subscribe((status) => {
-        console.log("Estado Realtime:", status);
-      });
+      .subscribe();
 
     return () => {
       supabase.removeChannel(channel);
@@ -162,19 +157,21 @@ function Admin() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white p-8">
+    <div className="min-h-screen bg-zinc-950 text-white px-4 sm:px-6 lg:px-8 py-6">
 
       <Notification visible={mostrarNotificacion} />
 
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-5 mb-8">
 
-        <h1 className="text-5xl font-black text-yellow-400">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-yellow-400">
           🍔 Panel de Administración
         </h1>
 
         <button
           onClick={cerrarSesion}
           className="
+            w-full
+            sm:w-auto
             bg-red-600
             hover:bg-red-700
             px-5
@@ -192,17 +189,19 @@ function Admin() {
       <Dashboard pedidos={pedidos} />
 
       {pedidos.length === 0 ? (
-        <div className="text-center mt-20">
 
-          <h2 className="text-3xl font-bold text-gray-400">
+        <div className="text-center mt-16 sm:mt-20">
+
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-400">
             🎉 No hay pedidos pendientes
           </h2>
 
-          <p className="text-gray-500 mt-4">
+          <p className="text-gray-500 mt-4 text-sm sm:text-base">
             Todos los pedidos fueron entregados.
           </p>
 
         </div>
+
       ) : (
 
         <div className="space-y-6 mt-8">

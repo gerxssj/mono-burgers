@@ -6,30 +6,79 @@ function CategoryTabs() {
   };
 
   return (
-    <div className="sticky top-[88px] z-40 bg-zinc-950 py-4">
+    <div className="sticky top-[88px] z-40 bg-zinc-950 border-b border-zinc-800">
 
-      <div className="flex justify-center gap-4">
+      <div
+        className="
+          max-w-7xl
+          mx-auto
+          px-4
+          py-4
+          overflow-x-auto
+          scrollbar-hide
+        "
+      >
 
-        <button
-          onClick={() => scrollTo("hamburguesas")}
-          className="bg-zinc-800 hover:bg-yellow-400 hover:text-black transition px-6 py-3 rounded-full font-bold"
-        >
-          🍔 Hamburguesas
-        </button>
+        <div className="flex gap-3 w-max mx-auto">
 
-        <button
-          onClick={() => scrollTo("otros")}
-          className="bg-zinc-800 hover:bg-yellow-400 hover:text-black transition px-6 py-3 rounded-full font-bold"
-        >
-          🍟 Otros
-        </button>
+          <button
+            onClick={() => scrollTo("hamburguesas")}
+            className="
+              whitespace-nowrap
+              bg-zinc-800
+              hover:bg-yellow-400
+              hover:text-black
+              transition
+              px-5
+              py-3
+              rounded-full
+              font-bold
+              text-sm
+              sm:text-base
+            "
+          >
+            🍔 Hamburguesas
+          </button>
 
-        <button
-          onClick={() => scrollTo("bebidas")}
-          className="bg-zinc-800 hover:bg-yellow-400 hover:text-black transition px-6 py-3 rounded-full font-bold"
-        >
-          🥤 Bebidas
-        </button>
+          <button
+            onClick={() => scrollTo("otros")}
+            className="
+              whitespace-nowrap
+              bg-zinc-800
+              hover:bg-yellow-400
+              hover:text-black
+              transition
+              px-5
+              py-3
+              rounded-full
+              font-bold
+              text-sm
+              sm:text-base
+            "
+          >
+            🍟 Otros
+          </button>
+
+          <button
+            onClick={() => scrollTo("bebidas")}
+            className="
+              whitespace-nowrap
+              bg-zinc-800
+              hover:bg-yellow-400
+              hover:text-black
+              transition
+              px-5
+              py-3
+              rounded-full
+              font-bold
+              text-sm
+              sm:text-base
+            "
+          >
+            🥤 Bebidas
+          </button>
+
+        </div>
 
       </div>
 

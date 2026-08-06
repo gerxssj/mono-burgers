@@ -16,17 +16,17 @@ function Menu() {
 
       <header className="sticky top-0 z-50 bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 border-b border-zinc-800 shadow-2xl">
 
-        <div className="max-w-7xl mx-auto px-6 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5">
 
-          <h1 className="text-5xl font-black text-yellow-400 tracking-wide">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-yellow-400 tracking-wide text-center sm:text-left">
             🍔 MONO BURGERS
           </h1>
 
-          <p className="text-lg text-yellow-100 mt-2">
+          <p className="text-sm sm:text-base lg:text-lg text-yellow-100 mt-2 text-center sm:text-left">
             🔥 Hamburguesas artesanales hechas a la parrilla
           </p>
 
-          <div className="flex flex-wrap gap-6 mt-4 text-gray-300">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-6 mt-4 text-gray-300 text-sm sm:text-base text-center sm:text-left">
 
             <span>📍 Santa Anita</span>
 
@@ -42,22 +42,24 @@ function Menu() {
 
       <CategoryTabs />
 
+      {/* HERO */}
+
       <Hero />
 
       {/* CONTENIDO */}
 
-      <main className="max-w-7xl mx-auto px-6 py-10">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
 
         {/* HAMBURGUESAS */}
 
         <h2
           id="hamburguesas"
-          className="text-4xl font-bold mb-8"
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6"
         >
           🍔 Hamburguesas
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-10 mb-16">
 
           {menu.hamburguesas.map((producto) => (
 
@@ -79,12 +81,12 @@ function Menu() {
 
         <h2
           id="otros"
-          className="text-4xl font-bold mb-8"
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6"
         >
           🍟 Otros
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-10 mb-16">
 
           {menu.otros.map((producto) => (
 
@@ -106,12 +108,12 @@ function Menu() {
 
         <h2
           id="bebidas"
-          className="text-4xl font-bold mb-8"
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6"
         >
           🥤 Bebidas
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-10 mb-28">
 
           {menu.bebidas.map((producto) => (
 
