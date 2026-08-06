@@ -23,7 +23,9 @@ function Login() {
 
     if (error) {
       console.error(error);
-      alert(error.message);
+      alert(
+        `Mensaje: ${error.message}\n\nCódigo: ${error.status || error.code}`
+        );
       return;
     }
 
