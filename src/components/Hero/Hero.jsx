@@ -17,7 +17,7 @@ function Hero() {
           </h2>
 
           <p className="text-gray-400 mt-5 text-base sm:text-lg leading-7">
-            Carne a la parrilla, papas al hilo y nuestras salsas especiales.
+            Carne a la parrilla, lechuga, tomate y papas fritas.
           </p>
 
           <h3 className="text-yellow-400 text-4xl sm:text-5xl font-black mt-8">
